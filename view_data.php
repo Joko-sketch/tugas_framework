@@ -73,7 +73,7 @@ $result = mysqli_query($conn, $sql);
         </tbody>
     </table>
     <!-- Tombol Back -->
-    <a href="javascript:history.back()" class="btn btn-secondary back-btn">Back</a>
+    <a href="javascript:history.back()" class="btn btn-secondary back-btn">Kembali</a>
 </div>
 
 </body>
