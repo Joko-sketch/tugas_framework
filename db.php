@@ -1,13 +1,12 @@
 <?php
-$host = 'localhost';
-$dbname = 'contact_db';
-$username = 'root'; // Sesuaikan dengan user database Anda
-$password = ''; // Sesuaikan dengan password database Anda
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "contact_db";
 
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>

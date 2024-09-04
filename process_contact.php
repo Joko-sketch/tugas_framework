@@ -1,26 +1,21 @@
 <?php
-require 'db.php';
+include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $Nama = htmlspecialchars($_POST['Nama']);
-    $Nim = htmlspecialchars($_POST['Nim']);
-    $Email = htmlspecialchars($_POST['Email']);
-    $Kelas = htmlspecialchars($_POST['Kelas']);
-    $Saran = htmlspecialchars($_POST['Saran']);
+    $nama = $_POST['Nama'];
+    $nim = $_POST['Nim'];
+    $email = $_POST['Email'];
+    $kelas = $_POST['Kelas'];
+    $saran = $_POST['Saran'];
 
-    $sql = "INSERT INTO contacts (Nama, Nim, Email, Kelas, Saran) VALUES (:Nama, :Nim, :Email, :Kelas, :Saran)";
-    $stmt = $conn->prepare($sql);
+    $sql = "INSERT INTO contacts (Nama, NIM, Email, Kelas, Saran) VALUES ('$nama', '$nim', '$email', '$kelas', '$saran')";
 
-    $stmt->bindParam(':Nama', $Nama);
-    $stmt->bindParam(':Nim', $Nim);
-    $stmt->bindParam(':Email', $Email);
-    $stmt->bindParam(':Kelas', $Kelas);
-    $stmt->bindParam(':Saran', $Saran);
-
-    if ($stmt->execute()) {
-        echo "Your message has been sent successfully!";
+    if (mysqli_query($conn, $sql)) {
+        header("Location: view_data.php"); // Redirect ke halaman view_data.php setelah berhasil submit
     } else {
-        echo "There was an error sending your message.";
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+
+    mysqli_close($conn);
 }
 ?>
