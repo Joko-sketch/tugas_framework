@@ -1,0 +1,9 @@
+body {
+    color: #000000;
+    overflow-x: hidden;
+    height: 100%;
+    background-image: url("image/altinay-dinc-LluELtL5mK4-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensure the image covers the entire body */
+    background-position: center; /* Optional: Center the image */
+}
